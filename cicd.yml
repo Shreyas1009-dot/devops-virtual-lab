@@ -1,4 +1,4 @@
-name: .github/workflows/cicd.yml
+name: DevOps CI/CD Pipeline
 
 on:
   push:
@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Build Docker Image
-      run: docker build -t devops-lab-app ./app
+      - name: Build Docker Image
+        run: docker build -t devops-lab-app ./app
 
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl apply -f k8s/deployment.yml
-        kubectl apply -f k8s/service.yml
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f k8s/deployment.yml
+          kubectl apply -f k8s/service.yml
